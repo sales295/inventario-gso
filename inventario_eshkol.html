@@ -4,6 +4,12 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script>
+// ── DETECT file:// protocol ──────────────────
+if (window.location.protocol === 'file:') {
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.innerHTML = '<div style="font-family:sans-serif;background:#0d1a0e;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px"><div style="max-width:520px;text-align:center"><div style="font-size:48px;margin-bottom:20px">☁️</div><h2 style="color:#76ff03;margin-bottom:12px">Esta app necesita internet</h2><p style="color:#aaa;margin-bottom:24px;line-height:1.6">No puedes abrir este archivo directamente desde tu computadora. Necesita cargarse desde un servidor web para conectarse a Firebase.</p><div style="background:#1f3522;border-radius:12px;padding:20px;text-align:left;margin-bottom:24px"><p style="color:#76ff03;font-weight:700;margin-bottom:12px">✅ Opciones para abrirlo:</p><p style="color:#ccc;margin-bottom:8px"><b>Opción 1 — GitHub Pages (recomendado):</b><br>Sube el archivo a GitHub y activa Pages</p><p style="color:#ccc;margin-bottom:8px"><b>Opción 2 — VS Code Live Server:</b><br>Instala la extensión Live Server y ábrelo</p><p style="color:#ccc"><b>Opción 3 — Python:</b><br><code style="background:#000;padding:2px 6px;border-radius:4px">python -m http.server 8080</code><br>Luego abre http://localhost:8080</p></div><p style="color:#666;font-size:12px">O comparte la URL de GitHub Pages con tu equipo — todos verán los mismos datos en tiempo real.</p></div></div>';
+  });
+}
 // ── FIREBASE CONFIG ──────────────────────────
 const firebaseConfig = {
   apiKey: "AIzaSyDglqqqJ_WSpBfqUdnq7AyXaZznQ0GmKGc",
@@ -50,39 +56,39 @@ function showSyncStatus(msg, color) {
 
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  /* ── Produce palette: Field to Table ── */
-  --bg:#0d1a0e;            /* deep forest night */
-  --surface:#122015;       /* dark soil */
-  --surface2:#182b1a;      /* moss */
-  --surface3:#1f3522;      /* fern */
-  --border:#2a4a2d;        /* bark */
-  --border2:#3a6040;       /* leaf vein */
+  /* ── Green & White palette ── */
+  --bg:#f0f7f0;
+  --surface:#ffffff;
+  --surface2:#e8f5e9;
+  --surface3:#d0ebd1;
+  --border:#b2dfb4;
+  --border2:#81c784;
 
   /* accent colors */
-  --green:#4caf50;         /* fresh leaf */
+  --green:#2e7d32;
   --green-dim:#388e3c;
   --green-dark:#1b5e20;
-  --green-bright:#76ff03;  /* lime zest */
-  --blue:#80cbc4;          /* morning dew */
-  --blue-dim:#4db6ac;
-  --yellow:#f9a825;        /* ripe mango */
-  --orange:#ef6c00;        /* tangerine */
-  --red:#c62828;           /* chili red */
-  --purple:#8d6e63;        /* fig */
-  --cream:#e8f5e9;         /* fresh parchment */
+  --green-bright:#00c853;
+  --blue:#1565c0;
+  --blue-dim:#1976d2;
+  --yellow:#f57f17;
+  --orange:#e65100;
+  --red:#c62828;
+  --purple:#6a1b9a;
+  --cream:#f9fbe7;
 
-  --text:#d4edda;          /* soft leaf */
-  --text2:#8fbc8f;         /* sage */
-  --text3:#4a7a50;         /* shadow green */
-  --row-a:#122015;
-  --row-b:#142818;
-  --search-bg:#0f1e10;
-  --th-prov:#1a3d1c;
+  --text:#1b2e1c;
+  --text2:#33691e;
+  --text3:#558b2f;
+  --row-a:#ffffff;
+  --row-b:#f1f8f1;
+  --search-bg:#e8f5e9;
+  --th-prov:#c8e6c9;
 }
 body{background:var(--bg);color:var(--text);font-family:'Cabin',sans-serif;font-size:13px;min-height:100vh}
 
 /* ── HEADER ── */
-.header{background:linear-gradient(135deg,#0d1b2a 0%,#1a2744 50%,#0d2137 100%);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:100}
+.header{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 50%,#388e3c 100%);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:100}
 .header-brand{display:flex;align-items:center;gap:14px}
 .header-logo{width:40px;height:40px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:800;color:#000;font-size:16px}
 .header-title{font-family:'Fraunces',serif;font-weight:700;font-size:18px;letter-spacing:-.3px}
@@ -92,7 +98,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cabin',sans-serif;font-
 .btn{padding:8px 16px;border-radius:7px;border:none;cursor:pointer;font-family:'Cabin',sans-serif;font-weight:600;font-size:12px;transition:all .15s}
 .btn-green{background:var(--green);color:#000}
 .btn-green:hover{background:var(--green-dim);transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-outline{background:#ffffff;color:#2e7d32;border:1.5px solid #81c784}
 .btn-outline:hover{border-color:var(--green);color:var(--green)}
 .btn-red{background:#b71c1c;color:#fff}
 .btn-red:hover{background:#c62828}
@@ -155,25 +161,26 @@ body{background:var(--bg);color:var(--text);font-family:'Cabin',sans-serif;font-
 /* ── INVENTORY TABLE ── */
 .table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border)}
 table.inv{width:100%;border-collapse:collapse;min-width:900px}
-table.inv thead th{background:var(--surface3);padding:9px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);white-space:nowrap;position:sticky;top:0;border-bottom:2px solid var(--border2)}
-table.inv thead th.th-prod{text-align:left;min-width:200px;background:#1a2030}
-table.inv thead th.th-prov{background:#1d2535;color:#7c8fbd}
-table.inv thead th.th-calc{background:#1e2a20;color:#5c8c6a}
-table.inv thead th.th-input-y{background:#2a2718;color:#9a8c50}
-table.inv thead th.th-dif{background:#281e33;color:#9060aa}
+table.inv thead th{background:#2e7d32;padding:9px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#ffffff;white-space:nowrap;position:sticky;top:0;border-bottom:2px solid #1b5e20;border-right:1px solid rgba(255,255,255,.15)}
+table.inv thead th.th-prod{text-align:left;min-width:200px;background:#1b5e20}
+table.inv thead th.th-prov{background:#388e3c;color:#e8f5e9}
+table.inv thead th.th-calc{background:#43a047;color:#e8f5e9}
+table.inv thead th.th-input-y{background:#2e7d32;color:#ffffff}
+table.inv thead th.th-dif{background:#1b5e20;color:#a5d6a7}
 table.inv tbody tr:nth-child(odd) td{background:var(--row-a)}
 table.inv tbody tr:nth-child(even) td{background:var(--row-b)}
-table.inv tbody tr:hover td{background:rgba(68,138,255,.06)!important}
+table.inv tbody tr:hover td{background:rgba(46,125,50,.08)!important}
 table.inv tbody tr.search-highlight td{background:rgba(68,138,255,.14)!important;outline:1px solid var(--blue-dim)}
 table.inv td{padding:0;border-bottom:1px solid var(--border)}
-table.inv td.td-name{padding:0 10px;font-weight:600;font-size:12px;min-width:200px;white-space:nowrap}
-table.inv td input{width:100%;background:transparent;border:none;outline:none;color:var(--text);font-family:DM Mono,monospace;font-size:12px;text-align:center;padding:8px 6px;cursor:text}
-table.inv td input:focus{background:rgba(255,215,64,.08);color:var(--yellow)}
+table.inv td.td-name{padding:0 10px;font-weight:600;font-size:12px;min-width:200px;white-space:nowrap;color:var(--green-dark)}
+table.inv td input{width:100%;background:transparent;border:1px solid transparent;border-radius:5px;outline:none;color:var(--text);font-family:DM Mono,monospace;font-size:12px;text-align:center;padding:6px 4px;cursor:text;transition:border-color .15s,background .15s}
+table.inv td input:hover{border-color:var(--border2);background:rgba(46,125,50,.05)}
+table.inv td input:focus{background:rgba(46,125,50,.12);color:var(--green-dark);border-radius:4px}
 table.inv td.td-sistema input{color:var(--green);font-weight:700;cursor:default}
 table.inv td.td-dif input{font-weight:700;cursor:default}
 table.inv td.td-dif.pos input{color:var(--green)}
 table.inv td.td-dif.neg input{color:var(--red)}
-table.inv tfoot td{background:var(--surface3)!important;font-family:DM Mono,monospace;font-weight:700;font-size:12px;text-align:center;padding:10px 6px;border-top:2px solid var(--border2)}
+table.inv tfoot td{background:#c8e6c9!important;font-family:DM Mono,monospace;font-weight:700;font-size:12px;text-align:center;padding:10px 6px;border-top:2px solid #2e7d32}
 table.inv tfoot td.tf-label{font-family:'Fraunces',serif;font-size:11px;text-align:left;padding-left:12px;color:var(--text)}
 table.inv tfoot td.tf-green{color:var(--green)}
 table.inv tfoot td.tf-orange{color:var(--orange)}
@@ -559,9 +566,9 @@ body::before {
 <body>
 
 <!-- Loading overlay -->
-<div id="loading-overlay" style="position:fixed;inset:0;background:rgba(13,26,14,.92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+<div id="loading-overlay" style="position:fixed;inset:0;background:rgba(240,247,240,.95);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
   <div style="font-size:40px;animation:spin 1.2s linear infinite">🌿</div>
-  <div style="font-family:Fraunces,serif;font-size:20px;color:var(--green-bright)">Conectando con la nube...</div>
+  <div style="font-family:Fraunces,serif;font-size:20px;color:#1b5e20">Conectando con la nube...</div>
   <div style="font-size:13px;color:var(--text3)">Sincronizando inventario en tiempo real</div>
 </div>
 <style>
@@ -579,8 +586,9 @@ body::before {
   </div>
   <div class="header-meta">
     <div class="date-badge" id="live-date"></div>
-    <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ Exportar CSV</button>
-      <button class="btn btn-outline btn-sm" style="border-color:#448aff;color:#448aff" onclick="exportSnapshot()">📤 Compartir Inventario</button>
+    <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ CSV</button>
+    <button class="btn btn-outline btn-sm" style="border-color:#ff6d00;color:#ff6d00" onclick="exportPDF()">📄 PDF</button>
+    <button class="btn btn-outline btn-sm" style="border-color:#00b0ff;color:#00b0ff" onclick="exportHistorialExcel()">📊 Historial Excel</button>
     <button class="btn btn-outline btn-sm" onclick="openHistorial()">📅 Historial</button>
     <button class="btn btn-green btn-sm" onclick="saveSnapshot()">💾 Guardar por Fecha</button>
   </div>
@@ -1924,11 +1932,161 @@ document.addEventListener('DOMContentLoaded', function() {
 function exportSnapshot() {
   showToast('💡 La app está en la nube — comparte la URL directamente con tu equipo');
 }
+
+// ═══════════════════════════════════════════════
+//  EXPORT PDF
+// ═══════════════════════════════════════════════
+function exportPDF() {
+  const actS = getActiveSuppliers();
+  const fecha = new Date().toLocaleDateString('es-US', {year:'numeric',month:'long',day:'numeric'});
+  const now   = new Date().toLocaleTimeString('es-US', {hour:'2-digit',minute:'2-digit'});
+
+  // Build table rows grouped by category
+  const catOrder = Object.keys(DEFAULT_CATS);
+  const grouped = {};
+  catOrder.forEach(cat => grouped[cat] = []);
+  grouped['SIN CATEGORÍA'] = [];
+  PRODUCTS.forEach(function(p) {
+    const cat = productCategories[p] || 'SIN CATEGORÍA';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(p);
+  });
+
+  let tableRows = '';
+  let totInv=0, totEnt=0, totVentas=0, totPerdidas=0, totSistema=0, totPiso=0, totDif=0;
+
+  Object.entries(grouped).forEach(function([cat, prods]) {
+    if (!prods.length) return;
+    const meta = categories[cat] || { color: '#888' };
+    tableRows += `<tr style="background:${meta.color}22;border-left:3px solid ${meta.color}">
+      <td colspan="${4 + actS.length}" style="padding:5px 8px;font-weight:700;font-size:11px;color:${meta.color};letter-spacing:.5px">${cat}</td>
+    </tr>`;
+    prods.forEach(function(p) {
+      const d = inventory[p];
+      const ent = totalEntradas(p);
+      const sis = sistema(p);
+      const dif = diferencia(p);
+      if (!parseFloat(d.inv) && !ent && !parseFloat(d.ventas) && !parseFloat(d.perdidas) && !parseFloat(d.piso)) return;
+      totInv+=parseFloat(d.inv)||0; totEnt+=ent; totVentas+=parseFloat(d.ventas)||0;
+      totPerdidas+=parseFloat(d.perdidas)||0; totSistema+=sis; totPiso+=parseFloat(d.piso)||0; totDif+=dif;
+      const difColor = dif>0?'#2e7d32':dif<0?'#c62828':'#666';
+      let supCells = actS.map(s=>`<td style="text-align:center;padding:4px 6px;font-size:11px">${(d.suppliers&&d.suppliers[s.id])||''}</td>`).join('');
+      tableRows += `<tr style="border-bottom:1px solid #eee">
+        <td style="padding:4px 8px;font-size:12px;font-weight:500">${p}</td>
+        <td style="text-align:center;padding:4px 6px;font-size:11px;color:#f57f00">${d.inv||''}</td>
+        ${supCells}
+        <td style="text-align:center;padding:4px 6px;font-size:11px;color:#e65100">${d.ventas||''}</td>
+        <td style="text-align:center;padding:4px 6px;font-size:11px;color:#b71c1c">${d.perdidas||''}</td>
+        <td style="text-align:center;padding:4px 6px;font-size:11px;color:#1565c0;font-weight:700">${Math.round(sis)||''}</td>
+        <td style="text-align:center;padding:4px 6px;font-size:11px">${d.piso||''}</td>
+        <td style="text-align:center;padding:4px 6px;font-size:11px;font-weight:700;color:${difColor}">${Math.round(dif)||''}</td>
+      </tr>`;
+    });
+  });
+
+  let supHeaders = actS.map(s=>`<th style="background:#1b5e20;color:#fff;padding:5px 6px;font-size:10px;white-space:nowrap">${s.nombre}</th>`).join('');
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>Inventario GSO — ${fecha}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
+    h1 { color: #1b5e20; margin-bottom: 4px; font-size: 20px; }
+    .meta { color: #666; font-size: 12px; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { background: #2e7d32; color: #fff; padding: 6px 8px; text-align: left; font-size: 11px; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .totals td { background: #e8f5e9; font-weight: 700; border-top: 2px solid #2e7d32; padding: 5px 8px; }
+    @media print { body { margin: 10px; } }
+  </style></head><body>
+  <h1>🌿 Green Sun One Corp — Inventario</h1>
+  <div class="meta">Generado el ${fecha} a las ${now} · ${PRODUCTS.length} productos</div>
+  <table>
+    <thead><tr>
+      <th style="min-width:140px">PRODUCTO</th>
+      <th>INV INICIAL</th>
+      ${supHeaders}
+      <th>VENTAS</th>
+      <th>PÉRDIDAS</th>
+      <th>INV SISTEMA</th>
+      <th>INV PISO</th>
+      <th>DIFERENCIA</th>
+    </tr></thead>
+    <tbody>${tableRows}</tbody>
+    <tfoot><tr class="totals">
+      <td>▸ TOTALES</td>
+      <td style="text-align:center">${Math.round(totInv)}</td>
+      ${actS.map(()=>'<td></td>').join('')}
+      <td style="text-align:center">${Math.round(totVentas)}</td>
+      <td style="text-align:center">${Math.round(totPerdidas)}</td>
+      <td style="text-align:center">${Math.round(totSistema)}</td>
+      <td style="text-align:center">${Math.round(totPiso)}</td>
+      <td style="text-align:center">${Math.round(totDif)}</td>
+    </tr></tfoot>
+  </table>
+  <script>window.onload=function(){ window.print(); }<\/script>
+  </body></html>`;
+
+  const win = window.open('', '_blank');
+  if (!win) { showToast('⚠️ Permite ventanas emergentes en tu navegador'); return; }
+  win.document.write(html);
+  win.document.close();
+  showToast('📄 PDF listo — usa Ctrl+P para guardar como PDF');
+}
+
+// ═══════════════════════════════════════════════
+//  EXPORT HISTORIAL A EXCEL (CSV multi-hoja simulado)
+// ═══════════════════════════════════════════════
+function exportHistorialExcel() {
+  const snaps = getSnapshots();
+  if (!snaps.length) {
+    showToast('⚠️ No hay historiales guardados. Usa 💾 Guardar por Fecha primero.');
+    return;
+  }
+
+  // Build CSV with all snapshots stacked
+  let csv = 'FECHA,NOTA,PRODUCTO,INV INICIAL,TOTAL ENTRADAS,VENTAS,PÉRDIDAS,INV SISTEMA,INV PISO,DIFERENCIA
+';
+
+  snaps.forEach(function(snap) {
+    const prods = snap.products || Object.keys(snap.data);
+    prods.forEach(function(p) {
+      const d = snap.data[p]; if (!d) return;
+      const ent = Object.values(d.suppliers||{}).reduce((s,v)=>s+(parseFloat(v)||0),0);
+      const sis = (parseFloat(d.inv)||0) + ent - (parseFloat(d.ventas)||0) - (parseFloat(d.perdidas)||0);
+      const dif = (parseFloat(d.piso)||0) - sis;
+      csv += [
+        snap.date,
+        '"' + (snap.note||'').replace(/"/g,'""') + '"',
+        '"' + p + '"',
+        d.inv||0,
+        Math.round(ent),
+        d.ventas||0,
+        d.perdidas||0,
+        Math.round(sis),
+        d.piso||0,
+        Math.round(dif)
+      ].join(',') + '
+';
+    });
+    // Empty row between snapshots
+    csv += '
+';
+  });
+
+  const fecha = new Date().toISOString().slice(0,10);
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,﻿' + encodeURIComponent(csv);
+  a.download = 'historial_inventario_gso_' + fecha + '.csv';
+  a.click();
+  showToast('📊 Historial exportado — ' + snaps.length + ' inventarios · ábrelo en Excel');
+}
 // ── INIT ──────────────────────────────────────
-initInventory();  // loads from Firebase and sets up realtime listener
-updateDate();
-setInterval(updateDate,30000);
-document.getElementById('fecha-input').valueAsDate = new Date();
+document.addEventListener('DOMContentLoaded', function() {
+  initInventory();  // loads from Firebase and sets up realtime listener
+  updateDate();
+  setInterval(updateDate, 30000);
+  document.getElementById('fecha-input').valueAsDate = new Date();
+});
 
 
 
