@@ -2044,8 +2044,7 @@ function exportHistorialExcel() {
   }
 
   // Build CSV with all snapshots stacked
-  let csv = 'FECHA,NOTA,PRODUCTO,INV INICIAL,TOTAL ENTRADAS,VENTAS,PÉRDIDAS,INV SISTEMA,INV PISO,DIFERENCIA
-';
+    let csv = 'FECHA,NOTA,PRODUCTO,INV INICIAL,TOTAL ENTRADAS,VENTAS,PERDIDAS,INV SISTEMA,INV PISO,DIFERENCIA\n';
 
   snaps.forEach(function(snap) {
     const prods = snap.products || Object.keys(snap.data);
@@ -2065,12 +2064,10 @@ function exportHistorialExcel() {
         Math.round(sis),
         d.piso||0,
         Math.round(dif)
-      ].join(',') + '
-';
+      ].join(',') + '\n';
     });
     // Empty row between snapshots
-    csv += '
-';
+    csv += '\n';
   });
 
   const fecha = new Date().toISOString().slice(0,10);
